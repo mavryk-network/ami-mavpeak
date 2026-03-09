@@ -1,8 +1,8 @@
-name: tezpeak-release-dispatch
+name: mavpeak-release-dispatch
 
 on:
   repository_dispatch:
-    types: ["tezpeak-release"]
+    types: ["mavpeak-release"]
 
 jobs:
   build:
@@ -22,18 +22,18 @@ jobs:
           VERSION: ${{ github.event.client_payload.version }}
         run: |
           # git checkout -b "$SOURCE-new-release"
-          eli .github/update-tezpeak-version.lua
+          eli .github/update-mavpeak-version.lua
           eli .github/get-specs-version.lua >> $GITHUB_OUTPUT
 
       - name: Add & Commit
         id: push_changes
         uses: EndBug/add-and-commit@v9
         with:
-          add: '[ "src/__xtz/sources.hjson", "src/specs.json" ]'
+          add: '[ "src/__mvrk/sources.hjson", "src/specs.json" ]'
           push: true
-          message: updated-tezpeak-version
-          author_name: TezpeakReleaseDispatch
-          author_email: tezpeak.release.dispatch@alis.is
+          message: updated-mavpeak-version
+          author_name: MavpeakReleaseDispatch
+          author_email: mavpeak.release.dispatch@alis.is
           branch: main
 
       - name: publish

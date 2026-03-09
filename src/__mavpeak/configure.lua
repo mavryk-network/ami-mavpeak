@@ -13,8 +13,8 @@ ami_assert(ok, "failed to create data directory - " .. tostring(err))
 -- 	end
 -- end
 
-local service_manager = require"__xtz.service-manager"
-local services = require"__tezpeak.services"
+local service_manager = require"__mvrk.service-manager"
+local services = require"__mavpeak.services"
 service_manager.remove_services(services.cleanup_names) -- cleanup past install
 service_manager.install_services(services.active)
 log_success(am.app.get("id") .. " services configured")
@@ -26,5 +26,5 @@ if user ~= "root" then
 end
 
 -- adjust data directory permissions
-require"__xtz.base_utils".setup_file_ownership()
+require"__mvrk.base_utils".setup_file_ownership()
 

@@ -1,5 +1,5 @@
 local app_id = am.app.get("id")
-local tezpeak_service_id = app_id .. "-tezpeak"
+local mavpeak_service_id = app_id .. "-mavpeak"
 
 local user = am.app.get("user", "root")
 ami_assert(type(user) == "string", "User not specified...", EXIT_INVALID_CONFIGURATION)
@@ -7,7 +7,7 @@ ami_assert(type(user) == "string", "User not specified...", EXIT_INVALID_CONFIGU
 local possible_residues = { }
 
 local active_services = {
-	[tezpeak_service_id] = am.app.get_configuration("TEZPEAK_SERVICE_FILE", "__tezpeak/assets/tezpeak")
+	[mavpeak_service_id] = am.app.get_configuration("MAVPEAK_SERVICE_FILE", "__mavpeak/assets/mavpeak")
 }
 
 local active_names = {}
@@ -22,7 +22,7 @@ cleanup_names = util.merge_arrays(cleanup_names, table.values(active_names))
 cleanup_names = util.merge_arrays(cleanup_names, table.values(possible_residues))
 
 return {
-	tezpeak_service_id = tezpeak_service_id,
+	mavpeak_service_id = mavpeak_service_id,
 	active = active_services,
 	active_names = active_names,
 	all_names = all_names,

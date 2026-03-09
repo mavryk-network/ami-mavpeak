@@ -1,10 +1,10 @@
-// tezpeak SOURCE: https://github.com/tez-capital/tezpeak/releases 
+// mavpeak SOURCE: https://github.com/mavryk-network/mavpeak/releases 
 // arc SOURCE: https://github.com/alis-is/arc-releases/releases 
 {
 	darwin-arm64: {
-		tezpeak: {
+		mavpeak: {
 			sha256: f7f4967f6f55ce724800c47a31fd217f5c2b66a6c3dae0dce21c82135f17b59b
-			url: https://github.com/tez-capital/tezpeak/releases/download/0.8.10-beta/tezpeak-macos-arm64
+			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.10-beta/mavpeak-macos-arm64
 			version: 0.8.10-beta
 		}
 	}
@@ -14,9 +14,9 @@
 			url: https://github.com/alis-is/arc-releases/releases/download/0.0.12/arc-aarch64-unknown-linux-musl
 			version: 0.0.12
 		}
-		tezpeak: {
+		mavpeak: {
 			sha256: 202db87b4c7439a476741fece19baf468c661b8e6f46b7130a7e7979052412d9
-			url: https://github.com/tez-capital/tezpeak/releases/download/0.8.10-beta/tezpeak-linux-arm64
+			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.10-beta/mavpeak-linux-arm64
 			version: 0.8.10-beta
 		}
 	}
@@ -26,9 +26,9 @@
 			url: https://github.com/alis-is/arc-releases/releases/download/0.0.12/arc-x86_64-unknown-linux-musl
 			version: 0.0.12
 		}
-		tezpeak: {
+		mavpeak: {
 			sha256: 988366144ae6889a64c73d8e0c099f36151b8cf611a5160e2d1ad5539f5991e3
-			url: https://github.com/tez-capital/tezpeak/releases/download/0.8.10-beta/tezpeak-linux-amd64
+			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.10-beta/mavpeak-linux-amd64
 			version: 0.8.10-beta
 		}
 	}

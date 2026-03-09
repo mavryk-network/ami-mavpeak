@@ -1,10 +1,10 @@
 return {
-    title = 'tezpeak',
+    title = 'mavpeak',
     commands = {
         info = {
             description = "ami 'info' sub command",
             summary = 'Prints runtime info and status of the app',
-            action = '__tezpeak/info.lua',
+            action = '__mavpeak/info.lua',
             options = {
                 ["services"] = {
                     description = "Prints info about services",
@@ -30,7 +30,7 @@ return {
                 end
 
                 if no_options or options.app then
-                    am.execute_extension('__xtz/download-binaries.lua', { context_fail_exit_code = EXIT_SETUP_ERROR })
+                    am.execute_extension('__mvrk/download-binaries.lua', { context_fail_exit_code = EXIT_SETUP_ERROR })
                 end
 
                 if no_options and not options['no-validate'] then
@@ -38,23 +38,23 @@ return {
                 end
 
                 if no_options or options.configure then
-                    am.execute_extension('__xtz/create_user.lua', { context_fail_exit_code = EXIT_APP_CONFIGURE_ERROR })
+                    am.execute_extension('__mvrk/create_user.lua', { context_fail_exit_code = EXIT_APP_CONFIGURE_ERROR })
                     am.app.render()
-                    am.execute_extension('__tezpeak/configure.lua', { context_fail_exit_code = EXIT_APP_CONFIGURE_ERROR })
+                    am.execute_extension('__mavpeak/configure.lua', { context_fail_exit_code = EXIT_APP_CONFIGURE_ERROR })
                 end
-                log_success('tezpeak setup complete.')
+                log_success('mavpeak setup complete.')
             end
         },
         start = {
             description = "ami 'start' sub command",
-            summary = 'Starts the tezpeak services',
-            action = '__tezpeak/start.lua',
+            summary = 'Starts the mavpeak services',
+            action = '__mavpeak/start.lua',
             context_fail_exit_code = EXIT_APP_START_ERROR
         },
         stop = {
             description = "ami 'stop' sub command",
-            summary = 'Stops the tezpeak services',
-            action = '__tezpeak/stop.lua',
+            summary = 'Stops the mavpeak services',
+            action = '__mavpeak/stop.lua',
             context_fail_exit_code = EXIT_APP_STOP_ERROR
         },
         validate = {
@@ -65,7 +65,7 @@ return {
                     am.print_help(cli)
                     return
                 end
-                log_success('tezpeak app configuration validated.')
+                log_success('mavpeak app configuration validated.')
             end
         },
         ["autodetect-configuration"] = {
@@ -96,7 +96,7 @@ return {
                         end
                     end
                 end
-                local result = am.execute_external('bin/tezpeak', {},
+                local result = am.execute_external('bin/mavpeak', {},
                     { inject_args = { "--root-dir", options.root or '..', "--autodetect-configuration", "config.hjson" } })
                 ami_assert(result == 0, "Failed to auto-detect configuration", EXIT_APP_INTERNAL_ERROR)
             end,
@@ -118,14 +118,14 @@ return {
                 }
             },
             type = "namespace",
-            action = '__tezpeak/log.lua',
+            action = '__mavpeak/log.lua',
             context_fail_exit_code = EXIT_APP_INTERNAL_ERROR
         },
         about = {
             description = "ami 'about' sub command",
             summary = 'Prints information about application',
             action = function(options, _, _, _)
-                local ok, about_raw = fs.safe_read_file('__tezpeak/about.hjson')
+                local ok, about_raw = fs.safe_read_file('__mavpeak/about.hjson')
                 ami_assert(ok, 'Failed to read about file!', EXIT_APP_ABOUT_ERROR)
 
                 local ok, about = hjson.safe_parse(about_raw)
@@ -141,7 +141,7 @@ return {
         version = {
             description = "ami 'version' sub command",
             summary = "Prints versions of binaries used by the app",
-            action = "__xtz/version.lua",
+            action = "__mvrk/version.lua",
             options = {
                 all = {
                     description = "Prent version and all related versions - dependencies, binaries...",
@@ -153,11 +153,11 @@ return {
             index = 7,
             action = function(options, _, _, _)
                 if options.all then
-                    am.execute_extension('__tezpeak/remove-all.lua', { context_fail_exit_code = EXIT_RM_ERROR })
-                    am.app.remove(require "__tezpeak/constants".protected_files)
+                    am.execute_extension('__mavpeak/remove-all.lua', { context_fail_exit_code = EXIT_RM_ERROR })
+                    am.app.remove(require "__mavpeak/constants".protected_files)
                     log_success('Application removed.')
                 else
-                    log_warn "only whole tezpeak ami instance can be remoced and requires --all parameter"
+                    log_warn "only whole mavpeak ami instance can be remoced and requires --all parameter"
                 end
                 return
             end

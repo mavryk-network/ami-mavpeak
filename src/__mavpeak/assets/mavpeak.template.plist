@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>{{{ID}}}-tezpeak</string>
+    <string>{{{ID}}}-mavpeak</string>
 
     <key>UserName</key>
     <string>{{{USER}}}</string>
@@ -12,7 +12,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>{{{ROOT_DIR}}}/bin/tezpeak</string>
+        <string>{{{ROOT_DIR}}}/bin/mavpeak</string>
         {{#model.STARTUP_ARGS}}
         <string>{{{.}}}</string>
         {{/model.STARTUP_ARGS}}
@@ -33,9 +33,9 @@
     <integer>1</integer>
 
     <key>StandardOutPath</key>
-    <string>/usr/local/var/log/{{{ID}}}-tezpeak.log</string>
+    <string>/usr/local/var/log/{{{ID}}}-mavpeak.log</string>
     <key>StandardErrorPath</key>
-    <string>/usr/local/var/log/{{{ID}}}-tezpeak.log</string>
+    <string>/usr/local/var/log/{{{ID}}}-mavpeak.log</string>
 
     {{#configuration.SERVICE_CONFIGURATION__ARRAY}}
     <key>{{{key}}}</key>

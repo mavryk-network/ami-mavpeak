@@ -1,7 +1,7 @@
--- tezpeak SOURCE: https://github.com/tez-capital/tezpeak/releases
+-- mavpeak SOURCE: https://github.com/mavryk-network/mavpeak/releases
 -- arc SOURCE: https://github.com/alis-is/arc-releases/releases
 -- usage:
--- eli src/__xtz/update-sources.lua [version]
+-- eli src/__mvrk/update-sources.lua [version]
 
 local hjson = require "hjson"
 
@@ -64,12 +64,12 @@ end
 -- Fetch Releases
 --------------------------------------------------------------------------------
 
--- 1. Tezpeak
-local tezpeak_release = fetch_github_release("tez-capital/tezpeak", arg[1])
-if tezpeak_release then
-	print("Found Tezpeak release: " .. tezpeak_release.tag_name)
+-- 1. Mavpeak
+local mavpeak_release = fetch_github_release("mavryk-network/mavpeak", arg[1])
+if mavpeak_release then
+	print("Found Mavpeak release: " .. mavpeak_release.tag_name)
 else
-	print("Warning: Failed to fetch Tezpeak release")
+	print("Warning: Failed to fetch Mavpeak release")
 end
 
 -- 2. Arc (Latest)
@@ -84,20 +84,20 @@ end
 -- Update Sources
 --------------------------------------------------------------------------------
 
-local current_sources = hjson.parse(fs.read_file("src/__xtz/sources.hjson"))
+local current_sources = hjson.parse(fs.read_file("src/__mvrk/sources.hjson"))
 local new_sources_map = {}
 
 local platforms = {
 	["linux-x86_64"] = {
-		tezpeak_pattern = "tezpeak%-linux%-amd64",
+		mavpeak_pattern = "mavpeak%-linux%-amd64",
 		arc_pattern = "arc%-x86_64%-unknown%-linux%-musl"
 	},
 	["linux-arm64"] = {
-		tezpeak_pattern = "tezpeak%-linux%-arm64",
+		mavpeak_pattern = "mavpeak%-linux%-arm64",
 		arc_pattern = "arc%-aarch64%-unknown%-linux%-musl"
 	},
 	["darwin-arm64"] = {
-		tezpeak_pattern = "tezpeak%-macos%-arm64"
+		mavpeak_pattern = "mavpeak%-macos%-arm64"
 		-- arc not available for macOS
 	}
 }
@@ -106,20 +106,20 @@ for platform, config in pairs(platforms) do
 	print("Updating " .. platform .. "...")
 	local new_platform_sources = {}
 
-	-- 1. Tezpeak
-	if tezpeak_release then
-		local tezpeak_data = extract_asset(tezpeak_release, config.tezpeak_pattern)
-		if tezpeak_data then
-			new_platform_sources.tezpeak = tezpeak_data
+	-- 1. Mavpeak
+	if mavpeak_release then
+		local mavpeak_data = extract_asset(mavpeak_release, config.mavpeak_pattern)
+		if mavpeak_data then
+			new_platform_sources.mavpeak = mavpeak_data
 		else
-			print("  Warning: Tezpeak asset matching " .. config.tezpeak_pattern .. " not found")
-			if current_sources[platform] and current_sources[platform].tezpeak then
-				new_platform_sources.tezpeak = current_sources[platform].tezpeak
+			print("  Warning: Mavpeak asset matching " .. config.mavpeak_pattern .. " not found")
+			if current_sources[platform] and current_sources[platform].mavpeak then
+				new_platform_sources.mavpeak = current_sources[platform].mavpeak
 			end
 		end
 	else
-		if current_sources[platform] and current_sources[platform].tezpeak then
-			new_platform_sources.tezpeak = current_sources[platform].tezpeak
+		if current_sources[platform] and current_sources[platform].mavpeak then
+			new_platform_sources.mavpeak = current_sources[platform].mavpeak
 		end
 	end
 
@@ -152,30 +152,30 @@ for k, v in pairs(current_sources) do
 	end
 end
 
-local new_content = "// tezpeak SOURCE: https://github.com/tez-capital/tezpeak/releases \n" ..
+local new_content = "// mavpeak SOURCE: https://github.com/mavryk-network/mavpeak/releases \n" ..
 	"// arc SOURCE: https://github.com/alis-is/arc-releases/releases \n"
 new_content = new_content .. hjson.stringify(new_sources_map, { separator = true, sort_keys = true })
 
-fs.write_file("src/__xtz/sources.hjson", new_content)
-print("Updated src/__xtz/sources.hjson")
+fs.write_file("src/__mvrk/sources.hjson", new_content)
+print("Updated src/__mvrk/sources.hjson")
 
 --------------------------------------------------------------------------------
 -- Update specs.json version
 --------------------------------------------------------------------------------
 
-if tezpeak_release then
-	local tezpeak_version = tezpeak_release.tag_name
+if mavpeak_release then
+	local mavpeak_version = mavpeak_release.tag_name
 	local specs_raw = fs.read_file("src/specs.json")
 	local specs = hjson.parse(specs_raw)
 	local package_version = string.split(specs.version, "+", true)[1]
-	local current_tezpeak_version = string.split(specs.version, "+", true)[2]
+	local current_mavpeak_version = string.split(specs.version, "+", true)[2]
 
-	-- Only update if tezpeak version changed
-	if current_tezpeak_version ~= tezpeak_version then
+	-- Only update if mavpeak version changed
+	if current_mavpeak_version ~= mavpeak_version then
 		local package_version_parts = string.split(package_version, ".", true)
 		local package_version_patch = tonumber(package_version_parts[3]) + 1
 		package_version = package_version_parts[1] .. "." .. package_version_parts[2] .. "." .. package_version_patch
-		specs.version = package_version .. "+" .. tezpeak_version
+		specs.version = package_version .. "+" .. mavpeak_version
 		fs.write_file("src/specs.json", hjson.stringify_to_json(specs, { indent = "    " }))
 		print("Updated src/specs.json to " .. specs.version)
 	else

@@ -1,5 +1,5 @@
 {
-    executable: {{{ROOT_DIR}}}/bin/tezpeak
+    executable: {{{ROOT_DIR}}}/bin/mavpeak
     args: [
         {{#configuration.STARTUP_ARGS}}
         {{.}}
@@ -7,8 +7,8 @@
     ]
     environment: {
         HOME: {{{ROOT_DIR}}}
-        TEZPEAK_CONFIG_FILE: {{{ROOT_DIR}}}/config.hjson
-        TEZBAKE_HOME: {{{model.TEZBAKE_HOME}}}
+        MAVPEAK_CONFIG_FILE: {{{ROOT_DIR}}}/config.hjson
+        MAVBAKE_HOME: {{{model.MAVBAKE_HOME}}}
     }
     working_directory: {{{ROOT_DIR}}}/data
     restart: always

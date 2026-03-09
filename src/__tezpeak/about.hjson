@@ -1,8 +1,0 @@
-{
-    "Description": '''
-tezpeak - tezos node/baker monitoring
-'''
-    Links: [
-        { website: "https://github.com/tez-capital/tezpeak" }
-    ]
-}

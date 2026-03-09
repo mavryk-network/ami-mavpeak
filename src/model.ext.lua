@@ -1,7 +1,7 @@
 local download_urls = am.app.get_model("DOWNLOAD_URLS")
 local arc_download_url = download_urls.arc
 
-local services = require("__tezpeak.services")
+local services = require("__mavpeak.services")
 local wanted_binaries = table.keys(services.active_names)
 
 if arc_download_url == nil then
@@ -21,7 +21,7 @@ am.app.set_model(
 			am.app.get_configuration("SERVICE_CONFIGURATION") or {},
 			true
 		),
-		TEZBAKE_HOME = am.app.get_configuration("TEZBAKE_HOME", path.normalize(path.combine(tostring(os.cwd()), ".."))),
+		MAVBAKE_HOME = am.app.get_configuration("MAVBAKE_HOME", path.normalize(path.combine(tostring(os.cwd()), ".."))),
 	},
 	{ merge = true, overwrite = true }
 )

@@ -2,8 +2,8 @@
     "version": "0.11.4+0.8.10-beta",
     "dependencies": [
         {
-            "id": "xtz.base"
+            "id": "mvrk.base"
         }
     ],
-    "id": "tzc.tezpeak"
+    "id": "mvd.mavpeak"
 }

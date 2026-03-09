@@ -1,5 +1,5 @@
 [Unit]
-Description={{{ID}}} tezpeak service
+Description={{{ID}}} mavpeak service
 After=default.target
 StartLimitIntervalSec=0
 
@@ -8,12 +8,12 @@ Type=simple
 Restart=always
 RestartSec=20
 
-Environment="HOME={{{model.TEZBAKE_HOME}}}"
-Environment="TEZPEAK_CONFIG_FILE={{{ROOT_DIR}}}/config.hjson"
+Environment="HOME={{{model.MAVBAKE_HOME}}}"
+Environment="MAVPEAK_CONFIG_FILE={{{ROOT_DIR}}}/config.hjson"
 
 WorkingDirectory={{{ROOT_DIR}}}/data
 
-ExecStart={{{ROOT_DIR}}}/bin/tezpeak {{{configuration.STARTUP_ARGS__CLI_ARGS}}}
+ExecStart={{{ROOT_DIR}}}/bin/mavpeak {{{configuration.STARTUP_ARGS__CLI_ARGS}}}
 
 {{#model.SERVICE_CONFIGURATION__ARRAY}}
 {{{key}}}={{{value}}}

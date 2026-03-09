@@ -67,8 +67,8 @@ jobs:
       - name: Air Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.AIR_ACCESS_TOKEN }}
-          repository: alis-is/air
+          token: ${{ secrets.MAVRYK_AMI_ACCESS_TOKEN }}
+          repository: mavryk-network/application-image-repository
           event-type: app-release
           client-payload: '{ "id": "${{ steps.repository_info.outputs.ID }}", "repository": "${{github.repository}}", "version": "${{steps.repository_info.outputs.VERSION}}", "package": "${{ steps.release_info.outputs.PACKAGE_SOURCE }}", "sha256": "${{ steps.release_info.outputs.SHA256 }}"}'
 
@@ -78,4 +78,4 @@ jobs:
       #     DISCORD_WEBHOOK: ${{ secrets.PB_DISCORD_WEBHOOK }}
       #     VERSION: ${{steps.repository_info.outputs.VERSION}}
       #   with:
-      #     args: "New ${{steps.repository_info.outputs.ID}} (ami package) **${{steps.repository_info.outputs.VERSION}}** released. (<https://github.com/tez-capital/ami-tezpeak/releases/tag/${{steps.repository_info.outputs.VERSION}}>)"
+      #     args: "New ${{steps.repository_info.outputs.ID}} (ami package) **${{steps.repository_info.outputs.VERSION}}** released. (<https://github.com/mavryk-network/ami-mavpeak/releases/tag/${{steps.repository_info.outputs.VERSION}}>)"
