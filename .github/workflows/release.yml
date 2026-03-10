@@ -10,7 +10,7 @@ on:
         required: true
         type: string
     secrets:
-      AIR_ACCESS_TOKEN:
+      MAVRYK_AMI_ACCESS_TOKEN:
         required: true
       # PB_DISCORD_WEBHOOK:
       #   required: true
