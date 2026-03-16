@@ -3,7 +3,7 @@
 {
 	darwin-arm64: {
 		mavpeak: {
-			sha256: 166a4ac71c012b491eb226579380ca7a0810e33ed5eb6632528e05376b031568
+			sha256: 0c06b411c4b4a45c6fdd80efcb63f8c03daef980d6c2a18f98fe3e5dceae6e97
 			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.10-beta/mavpeak-macos-arm64
 			version: 0.8.10-beta
 		}
@@ -15,7 +15,7 @@
 			version: 0.0.12
 		}
 		mavpeak: {
-			sha256: 10217bb23fdf44c72747e70c18a15d62ecef702b4a0f2fc5abf8c5098bc83c0c
+			sha256: 9fc0aaedec9ca3a7175bf0c5dd2f26223cb213f19bcf06bab4721f268669f2e3
 			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.10-beta/mavpeak-linux-arm64
 			version: 0.8.10-beta
 		}
@@ -27,7 +27,7 @@
 			version: 0.0.12
 		}
 		mavpeak: {
-			sha256: 4c371c34412ea847012bdeeb7e5c9fe387026db733c938230fa2d0e723cf3894
+			sha256: d1218ae379bfa160efc8232a75cbb70c74a0c47b0697d14f4cffe158a5f13ac1
 			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.10-beta/mavpeak-linux-amd64
 			version: 0.8.10-beta
 		}
