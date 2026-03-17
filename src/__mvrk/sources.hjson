@@ -3,9 +3,9 @@
 {
 	darwin-arm64: {
 		mavpeak: {
-			sha256: 53637a81040b617a4bdeb7c6165aa31be266da7da829925fe4a576913ab6665c
-			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.11-beta/mavpeak-macos-arm64
-			version: 0.8.11-beta
+			sha256: c4ee003cd4a4d847a2a26494d606363c47074b6998a2fc2de019bafb074d2615
+			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.12-beta/mavpeak-macos-arm64
+			version: 0.8.12-beta
 		}
 	}
 	linux-arm64: {
@@ -15,9 +15,9 @@
 			version: 0.0.12
 		}
 		mavpeak: {
-			sha256: 70410c36e09219674a9275cc3db48c8d51657c0e8052aafe023546669228e247
-			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.11-beta/mavpeak-linux-arm64
-			version: 0.8.11-beta
+			sha256: d25eafa8d557aff8ec0b53920f0deaa210ef5b089bffa4e44cd9b381331caf50
+			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.12-beta/mavpeak-linux-arm64
+			version: 0.8.12-beta
 		}
 	}
 	linux-x86_64: {
@@ -27,9 +27,9 @@
 			version: 0.0.12
 		}
 		mavpeak: {
-			sha256: 5c5dad2c0d26ba002643985c56a27ac8a16c7d3975da83ba909b2e789d08f1a2
-			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.11-beta/mavpeak-linux-amd64
-			version: 0.8.11-beta
+			sha256: a5fc6ad7c15ba722642f032aa0e44d6534dd6d391f59ee9e2d02a7a21dfe1316
+			url: https://github.com/mavryk-network/mavpeak/releases/download/0.8.12-beta/mavpeak-linux-amd64
+			version: 0.8.12-beta
 		}
 	}
 }

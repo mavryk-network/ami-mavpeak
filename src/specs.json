@@ -1,9 +1,9 @@
 {
-    "id": "mvd.mavpeak",
-    "version": "0.11.5+0.8.11-beta",
     "dependencies": [
         {
             "id": "mvrk.base"
         }
-    ]
+    ],
+    "version": "0.11.6+0.8.12-beta",
+    "id": "mvd.mavpeak"
 }
